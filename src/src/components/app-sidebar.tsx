@@ -1,4 +1,4 @@
-import { BookOpen, Calendar, Home, Settings } from "lucide-react";
+import { BookOpen, Home } from "lucide-react";
 import { Link, useLocation } from "react-router";
 
 import {
@@ -38,7 +38,6 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  {/* ✅ แก้ไข: Base UI ใช้ `render={<Link />}` แทน `asChild` */}
                   <SidebarMenuButton
                     isActive={location.pathname === item.url}
                     render={<Link to={item.url} />}
@@ -53,7 +52,6 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {/* ข้อ 5.1: ข้อมูลผู้ใช้งานปัจจุบัน ดึงจาก mock-data.ts (currentUser) */}
       <SidebarFooter>
         <Separator className="mb-2" />
         <div className="flex items-center gap-2 px-2 py-1">

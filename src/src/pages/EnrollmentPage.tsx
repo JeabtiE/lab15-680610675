@@ -8,7 +8,6 @@ import {
 } from "@/lib/mock-data";
 import type { Enrollment } from "@/lib/types";
 
-// สร้างค่า enrolledAt แบบ ISO local (ไม่มี timezone offset) ให้ตรงรูปแบบใน mock-data.ts
 function toLocalISOString(date: Date) {
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(
@@ -17,7 +16,6 @@ function toLocalISOString(date: Date) {
 }
 
 export default function EnrollmentPage() {
-  // เก็บเฉพาะรายการลงทะเบียนของ currentStudent ไว้เป็น state ในหน้านี้
   const [enrollments, setEnrollments] = useState<Enrollment[]>(() =>
     initialEnrollments.filter(
       (e) => e.studentId === currentStudent.studentId,
@@ -30,7 +28,6 @@ export default function EnrollmentPage() {
     return map;
   }, [enrollments]);
 
-  // วิชาที่ยังไม่ได้ลงทะเบียน สำหรับแสดงในฟอร์ม
   const availableCourses = courses.filter(
     (course) => !enrolledMap.has(course.courseId),
   );
@@ -65,7 +62,6 @@ export default function EnrollmentPage() {
           </p>
         </div>
 
-        {/* ปุ่ม/ฟอร์มลงทะเบียน วางไว้ด้านนอกการ์ด */}
         <RegisterDialog
           student={currentStudent}
           availableCourses={availableCourses}

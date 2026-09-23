@@ -19,7 +19,6 @@ export default function HomePage() {
         </CardContent>
       </Card>
 
-      {/* ข้อมูลผู้ใช้ปัจจุบัน ดึงจาก currentStudent ใน mock-data.ts ไม่ hardcode */}
       <p className="text-sm text-muted-foreground">
         จัดทำโดย {currentStudent.firstName} {currentStudent.lastName}{" "}
         รหัสนักศึกษา {currentStudent.studentId}

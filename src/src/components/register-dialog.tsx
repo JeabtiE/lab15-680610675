@@ -27,7 +27,6 @@ type RegisterDialogProps = {
   onEnroll: (courseId: string, time: string) => void;
 };
 
-// ค่าเริ่มต้นของ input เวลา (type="time") เป็นเวลาปัจจุบัน รูปแบบ "HH:mm"
 function currentTimeValue() {
   const now = new Date();
   const pad = (n: number) => String(n).padStart(2, "0");
@@ -39,11 +38,10 @@ export function RegisterDialog({
   availableCourses,
   onEnroll,
 }: RegisterDialogProps) {
-  const [open, setOpen] = useState(false); // true = แสดง Dialog
+  const [open, setOpen] = useState(false);
   const [courseId, setCourseId] = useState<string | null>(null);
   const [time, setTime] = useState(currentTimeValue());
 
-  // วิชา (Select) - แสดงเฉพาะวิชาที่ นศ. ยังไม่ได้ลงทะเบียน ในรูปแบบ "รหัสวิชา – ชื่อวิชา"
   const courseItems = availableCourses.map((course) => ({
     value: course.courseId,
     label: `${course.courseId} – ${course.courseTitle}`,
@@ -64,16 +62,15 @@ export function RegisterDialog({
   }
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault(); // ไม่ให้หน้าเว็บ reload
+    e.preventDefault();
     if (!courseId) return;
     onEnroll(courseId, time);
-    setOpen(false); // ปิด Dialog
+    setOpen(false);
     resetForm();
   }
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      {/* ปุ่มที่กดแล้วเปิดฟอร์มป้อนข้อมูลการลงทะเบียน */}
       <DialogTrigger render={<Button />}>ลงทะเบียน</DialogTrigger>
 
       <DialogContent>

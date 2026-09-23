@@ -26,7 +26,6 @@ export default function RootLayout() {
           <Outlet />
         </main>
 
-        {/* ข้อ 4: ชื่อ-นามสกุล และรหัสนักศึกษาของผู้จัดทำ */}
         <footer className="border-t p-4 text-center text-xs text-muted-foreground">
           จัดทำโดย Nattapat Srirung รหัสนักศึกษา 680610675
         </footer>

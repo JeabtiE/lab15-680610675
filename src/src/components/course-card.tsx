@@ -19,7 +19,6 @@ type CourseCardProps = {
   onUnenroll?: () => void;
 };
 
-// แสดงวันที่แบบ พ.ศ. เช่น "13 ก.ย. 2569 14:15"
 function formatEnrolledAt(iso?: string) {
   if (!iso) return "-";
   return new Intl.DateTimeFormat("th-TH-u-ca-buddhist", {
